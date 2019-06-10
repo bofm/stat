@@ -141,6 +141,18 @@ local function stat(args)
         stats['stat.net.sent.rps'] = box_stat_net.SENT.rps
         stats['stat.net.received.total'] = box_stat_net.RECEIVED.total
         stats['stat.net.received.rps'] = box_stat_net.RECEIVED.rps
+        if box_stat_net.CONNECTIONS ~= nil then
+            -- Tarantool >= 1.10.3-24-gf8d69266
+            stats['stat.net.connections.rps'] = box_stat_net.CONNECTIONS.rps
+            stats['stat.net.connections.current'] = box_stat_net.CONNECTIONS.current
+            stats['stat.net.connections.total'] = box_stat_net.CONNECTIONS.total
+        end
+        if box_stat_net.REQUESTS ~= nil then
+            -- Tarantool >= 1.10.3-24-gf8d69266
+            stats['stat.net.requests.rps'] = box_stat_net.REQUESTS.rps
+            stats['stat.net.requests.current'] = box_stat_net.REQUESTS.current
+            stats['stat.net.requests.total'] = box_stat_net.REQUESTS.total
+        end
     end
 
     local ed_time = clock.realtime()
