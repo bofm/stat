@@ -118,7 +118,6 @@ local function stat(args)
         end
     end
 
-
     do
         local i = box.stat()
         for k, v in pairs(i) do
